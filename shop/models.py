@@ -1,6 +1,7 @@
 from datetime import timezone
 from django.utils import timezone
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 # https://docs.djangoproject.com/en/4.2/topics/db/models/
@@ -20,6 +21,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('shop:product_list_by_category',args=[self.slug])
 
 
 # клас Product -> таблиця shop_product
